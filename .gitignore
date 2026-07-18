@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Compiled output
+out/
+*.vsix
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Keys & credentials
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Dot directories
+.*/
+
+# Project docs (only README.md is public-facing)
+*.md
+!README.md
+
+# Editor test artifacts
+.vscode-test/
+icons/
+install-extensions.sh
+
+# Ignore self — not tracked in repo
+.gitignore
+.vscodeignore
+.gitignore
+.vscodeignore
+install-extensions.sh

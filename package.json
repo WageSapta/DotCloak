@@ -1,0 +1,136 @@
+{
+  "name": "dotcloak",
+  "displayName": "DotCloak - Secure .env File Editor",
+  "description": "Secure editor for .env files with automatic secret masking, streaming protection, and privacy controls",
+  "version": "1.0.0",
+  "icon": "images/icon.png",
+  "author": "Wage Kusuma",
+  "publisher": "wagekusuma",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Security"
+  ],
+  "keywords": [
+    "env",
+    "environment",
+    "dotenv",
+    "environment variables",
+    "secrets",
+    "security",
+    "masking",
+    "protection",
+    "streaming",
+    "recording",
+    "privacy"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "dotcloak.customEditor",
+        "displayName": "DotCloak Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.env"
+          },
+          {
+            "filenamePattern": ".env"
+          },
+          {
+            "filenamePattern": ".env.*"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "dotcloak.addKey",
+        "title": "Add Key",
+        "icon": "$(add)"
+      },
+      {
+        "command": "dotcloak.editKey",
+        "title": "Edit Key",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "dotcloak.deleteKey",
+        "title": "Delete Key",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "dotcloak.toggleReveal",
+        "title": "Reveal Values",
+        "icon": "$(eye)"
+      },
+      {
+        "command": "dotcloak.copyKeys",
+        "title": "Copy Keys Only",
+        "icon": "$(copy)"
+      },
+      {
+        "command": "dotcloak.exportMasked",
+        "title": "Export Masked",
+        "icon": "$(cloud-download)"
+      },
+      {
+        "command": "dotcloak.toggleMode",
+        "title": "Toggle DotCloak Mode"
+      },
+      {
+        "command": "dotcloak.toggleLock",
+        "title": "Toggle Lock"
+      },
+      {
+        "command": "dotcloak.search",
+        "title": "Search Keys"
+      },
+      {
+        "command": "dotcloak.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "dotcloak.openWithDotcloak",
+        "title": "DotCloak: Open as DotCloak Editor"
+      },
+      {
+        "command": "dotcloak.openAsText",
+        "title": "DotCloak: Open as Plain Text"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "dotcloak.openWithDotcloak",
+          "when": "resourceFilename =~ /\\.env/",
+          "group": "navigation@1"
+        },
+        {
+          "command": "dotcloak.openAsText",
+          "when": "resourceFilename =~ /\\.env/",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}

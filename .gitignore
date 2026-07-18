@@ -28,9 +28,10 @@ Thumbs.db
 # Dot directories
 .*/
 
-# Project docs (only README.md is public-facing)
+# Project docs (only README.md and CHANGELOG.md are public-facing)
 *.md
 !README.md
+!CHANGELOG.md
 
 # Editor test artifacts
 .vscode-test/

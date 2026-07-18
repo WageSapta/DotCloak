@@ -7,13 +7,16 @@
   "author": "Wage Kusuma",
   "publisher": "wagekusuma",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WageSapta/DotCloak.git"
+  },
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
     "Other",
-    "Programming Languages",
-    "Security"
+    "Programming Languages"
   ],
   "keywords": [
     "env",
@@ -126,7 +129,11 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./"
+    "watch": "tsc -watch -p ./",
+    "clean": "rm -rf out build-outputs",
+    "package": "npm run compile && vsce package --out build-outputs/",
+    "publish": "npm run compile && vsce publish",
+    "publish:ovsx": "npm run compile && ovsx publish"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

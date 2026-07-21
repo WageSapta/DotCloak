@@ -2,6 +2,8 @@
 
 A VS Code extension for viewing and editing `.env` files with privacy and security as the default. Lightweight — only **40 KB** packaged.
 
+![DotCloak Preview](images/screenshot.png)
+
 ## Why this exists
 
 `.env` files contain secrets — API keys, database URLs, tokens. Standard text editors leave them fully visible. DotCloak masks values by default so you can work without exposing credentials on screen, during screenshares, or in recordings.
@@ -24,7 +26,7 @@ A VS Code extension for viewing and editing `.env` files with privacy and securi
 | **Secrets in screenshots/recordings**  | Masked by default (`***`). Values only visible when explicitly unlocked.                                                                     |
 | **Credentials in editor chrome**       | No sidebar, no tree view, no emoji — just a clean table.                                                                                     |
 | **Accidental exposure during editing** | Lock mode prevents value visibility. Unlock is per-session and resets when switching files.                                                  |
-| **Vendor lock-in**                     | DotCloak is open source (MIT). Your `.env` files stay standard — no custom format or metadata injected.                                      |
+| **Vendor lock-in**                     | DotCloak is proprietary (All Rights Reserved). Your `.env` files stay standard — no custom format or metadata injected.                      |
 
 ## Usage
 
@@ -47,11 +49,6 @@ A VS Code extension for viewing and editing `.env` files with privacy and securi
 
 ## Transparency
 
-- **Open source** under the MIT License — review the code at [github.com/wagekusuma/dotcloak](https://github.com/wagekusuma/dotcloak)
 - **No background processes** — the extension only activates when you open an `.env` file
 - **No external requests** — except the Ko-fi button you explicitly click
 - **No file modification** beyond what you explicitly edit through the UI
-
-## License
-
-MIT

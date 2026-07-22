@@ -2,7 +2,7 @@
   "name": "dotcloak",
   "displayName": "DotCloak - Secure .env File Editor",
   "description": "Secure editor for .env files with automatic secret masking, streaming protection, and privacy controls",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icon": "images/icon.png",
   "author": "Wage Kusuma",
   "publisher": "wagekusuma",

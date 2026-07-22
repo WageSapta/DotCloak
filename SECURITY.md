@@ -30,6 +30,7 @@ If you discover a security vulnerability or security flaw in DotCloak, please re
 ### What to Include in Your Report
 
 To help us evaluate and address the issue efficiently, please include:
+
 - A description of the vulnerability and its potential impact.
 - Step-by-step instructions or proof-of-concept (PoC) to reproduce the behavior.
 - Operating system and VS Code extension version.

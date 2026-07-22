@@ -50,5 +50,4 @@ A VS Code extension for viewing and editing `.env` files with privacy and securi
 ## Transparency
 
 - **No background processes** — the extension only activates when you open an `.env` file
-- **No external requests** — except the Ko-fi button you explicitly click
 - **No file modification** beyond what you explicitly edit through the UI

@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.1] - 2026-07-22
+
+- Updated publisher metadata and security guidelines
+
 ## [1.0.0] - 2026-07-18
 
 - Initial release

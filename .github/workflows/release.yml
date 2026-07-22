@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compile extension
+        run: npm run compile
+
+      - name: Package extension (.vsix)
+        run: npx @vscode/vsce package --out "dotcloak-${{ github.ref_name }}.vsix"
+
+      - name: Extract Release Notes from CHANGELOG.md
+        id: extract_notes
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          node -e '
+            const fs = require("fs");
+            const tag = process.env.TAG_NAME.replace(/^v/, "");
+            if (!fs.existsSync("CHANGELOG.md")) {
+              fs.writeFileSync("RELEASE_NOTES.md", `Release ${process.env.TAG_NAME}`);
+              process.exit(0);
+            }
+            const changelog = fs.readFileSync("CHANGELOG.md", "utf8");
+            const lines = changelog.split("\n");
+            let capturing = false;
+            let notes = [];
+            for (const line of lines) {
+              if (line.startsWith(`## [${tag}]`)) {
+                capturing = true;
+                continue;
+              }
+              if (capturing) {
+                if (line.startsWith("## [")) break;
+                notes.push(line);
+              }
+            }
+            const result = notes.join("\n").trim();
+            fs.writeFileSync("RELEASE_NOTES.md", result || `Release ${process.env.TAG_NAME}`);
+          '
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: DotCloak ${{ github.ref_name }}
+          body_path: RELEASE_NOTES.md
+          files: dotcloak-${{ github.ref_name }}.vsix
+          draft: false
+          prerelease: false
